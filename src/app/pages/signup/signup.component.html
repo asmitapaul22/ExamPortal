@@ -1,0 +1,118 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt3">
+            <div class="col-md-8 offset-md-2  mb3">
+              <mat-card>
+                <div class="container text-center">
+                    <img src="../../../assets/registor-logo.gif" style="width: 20%;" alt="">
+                </div>
+                <h1 class="text-center">Register Here</h1>
+                <form (ngSubmit)="formSubmit()">
+                    <!-- {{user | json}} -->
+                    <!-- USERNAME FEILD -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Username</mat-label>
+                        <input
+                        name="username" [(ngModel)]="user.username"
+                        required  matInput placeholder="Enter username">
+                       
+                        <mat-hint>Username should be unique.</mat-hint>
+                      </mat-form-field>
+                      <!-- PASSWORD FEILD -->
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input
+                        name="password" [(ngModel)]="user.password" [pattern]="passwordPattern" #password=ngModel
+                        required type="password" matInput placeholder="Enter password">
+                       
+                        <mat-hint>Hint</mat-hint>
+                      </mat-form-field>
+                      <div *ngIf="password.errors"> 
+                        <!-- <div *ngIf="password.errors.required" style="color: red;"> 
+                           <span>Official password required.</span> 
+                        </div>			    -->
+                        <div *ngIf="password.errors.pattern" style="color: red;"> 
+                           <small>Password should have atleast 8 characters in length,
+                           atleast one Lowercase letter,
+                           atleast one Uppercase letter,
+                           atleast one Number and atleast one Special character.</small>
+                        </div>	
+                     </div>
+
+
+
+
+
+                      <!-- FIRST NAME -->
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input
+                        name="firstName" [(ngModel)]="user.firstName"
+                        required matInput placeholder="Enter First name">
+                       
+                        <mat-hint>Hint</mat-hint>
+                      </mat-form-field>
+                      <!-- LAST NAME -->
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input 
+                        name="lastName" [(ngModel)]="user.lastName"
+                        required matInput placeholder="Enter Last name">
+                       
+                        <mat-hint>Hint</mat-hint>
+                      </mat-form-field>
+                      <!-- EMAIL -->
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email Address</mat-label>
+                        <input
+                        name="email" [(ngModel)]="user.email" [pattern]="emailPattern" #email="ngModel"
+                        required type="email" matInput placeholder="Enter Email address">
+                        
+                        <!-- <mat-hint>Hint</mat-hint> -->
+                      </mat-form-field>
+                      <div *ngIf="email.errors"> 
+                        <!-- <div *ngIf="email.errors.required" style="color: red;"> 
+                           <span>Official Email required.</span> 
+                        </div>			    -->
+                        <div *ngIf="email.errors.pattern" style="color: red;"> 
+                           <small>Email address is not valid.</small>
+                        </div>	
+                     </div> 
+                      <!-- PHONE -->
+                      <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <input 
+                        name="phone" [(ngModel)]="user.phone"[pattern]="phonePattern" #phone="ngModel"
+                        required type="number" matInput placeholder="Enter Phone number">
+                       
+                        <mat-hint>Hint</mat-hint>
+                      </mat-form-field>
+                      <div *ngIf="phone.errors"> 
+                        <!-- <div *ngIf="phone.errors.required" style="color: red;"> 
+                           <span>Official phone required.</span> 
+                        </div>			    -->
+                        <div *ngIf="phone.errors.pattern" style="color: red;"> 
+                           <small>Invalid Phone Number.</small>
+                        </div>	
+                     </div> 
+
+
+
+                      <!-- ABOUT -->
+                      <mat-form-field  class="full-width"appearance="outline">
+                        <mat-label>About</mat-label>
+                        <textarea 
+                        name="about" [(ngModel)]="user.about"
+                        rows="10" matInput placeholder="Enter something about yourself"></textarea>
+                        <mat-hint>Hint</mat-hint>
+                      </mat-form-field>
+                      <div class="container text-center" style="margin-bottom: 3%;">
+                          <button type="submit" mat-raised-button color="primary">Register</button>
+                          <button type="reset" class="ml2" mat-raised-button color="accent">Reset</button>
+                      </div>
+                </form>
+              </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
